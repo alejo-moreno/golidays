@@ -1,8 +1,10 @@
 import page from 'page';
+import * as detail from 'client/detail';
 import * as template  from './template';
 
 
 page('/inbox', function (ctx, next) {
+    detail.renderHome();
     if (!localStorage.inbox) {
         $.getJSON('/inbox', function (data) {
             localStorage.inbox = JSON.stringify(data);
