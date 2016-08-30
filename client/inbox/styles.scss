@@ -1,0 +1,29 @@
+.gvacation-sidenav {
+  .inbox {    
+      input {
+          text-transform: capitalize;
+      }  
+      input::-webkit-input-placeholder {
+        text-align: center;
+      }
+      input::-moz-placeholder { /* Firefox 19+ */
+        text-align: center;
+      }
+      input:-ms-input-placeholder { /* IE 10+ */
+        text-align: center;
+      }
+      input:-moz-placeholder { /* Firefox 18- */
+        text-align: center;
+      }
+     i {
+       position: absolute;
+       right: 10px;
+       top: 10px;
+     }
+      .collection li {
+          a span,p{
+            color:black;      
+          }
+      }      
+  }
+}

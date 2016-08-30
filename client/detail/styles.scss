@@ -1,0 +1,22 @@
+.app-container {
+    .section {
+        h5:after{
+            content: " Request";
+        }
+        span.badge {
+            position: inherit;            
+        }
+        span.badge.new:after{
+          content: " ";
+        }        
+    }
+    .collection {
+        border: none;
+        .collection-item {
+            background-color: #fafafa;
+        }
+    }
+    .actions {
+        padding-top: 25px;
+    }
+}

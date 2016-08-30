@@ -1,0 +1,81 @@
+/*http://www.materialpalette.com/indigo/amber*/
+$primary-color: #F44336  !default;
+$primary-text :#212121;
+$secondary-color:#4CAF50;
+$decline-color: #f9a825;
+
+@import 'node_modules/materialize-css/sass/materialize.scss';
+@import 'client/inbox/styles';
+@import 'client/detail/styles';
+
+body{
+    background: #fafafa;
+    font-family: 'Roboto';
+    color: $primary-text;
+}
+
+main,footer{
+    padding-left: 350px;
+}
+
+nav{
+    color: white;
+    background-color: $primary-color;    
+}
+
+section {
+  text-align: center;
+  padding-top: 15px;
+}
+
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+      padding-left: 0;
+    }
+}
+
+#nav-mobile {
+ top:64px;
+ background-color: #fafafa;
+ overflow: hidden;
+ &:hover{
+    overflow-y: auto;
+ }  
+} 
+
+.gvacation-sidenav {
+  position: fixed;
+  width: 350px;
+  height: calc(100% - 10vh);
+  left: 0;
+  top: 0;
+  margin: 0;
+  transform: translateX(-100%);
+  height: -moz-calc(100%);
+  padding-bottom: 60px;
+  background-color: #fff;
+  z-index: 999;
+  backface-visibility: hidden;
+  overflow-y: auto;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateX(-105%);
+}
+
+a.button-collapse.top-nav {
+    position: absolute;
+    top: 12px;
+    color: #fff;
+    font-size: 36px;
+    z-index: 2;
+    i{
+        font-size: 32px;
+    }
+}
+
+/*** Customizations ***/
+.btn-floating i {
+  font-size: 1.5rem;
+}
+ 
+

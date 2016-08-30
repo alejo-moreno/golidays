@@ -1,0 +1,16 @@
+extends layout
+
+block content  
+    header    
+      nav.top-nav
+        .container
+          .nav-wrapper
+            a.brand-logo.center(href='/') #{title}
+      .container
+        a.button-collapse.top-nav.full.hide-on-large-only(href='#', data-activates='nav-mobile')
+          i.material-icons menu       
+      ul#nav-mobile.gvacation-sidenav.fixed                
+    main    
+      .row
+        .app-container.col.s12
+          
