@@ -8,8 +8,16 @@ router.get('/', function (req, res, next) {
     res.render('index', { title: 'Golidays' });
 });
 
+router.get('/home', function (req, res, next) {
+    res.redirect('/');
+});
+
 router.get('/inbox', function (req, res, next) {
     res.json(inbox)
+})
+
+router.get('/inbox/*', function (req, res, next) {
+    res.redirect('/');
 })
 
 module.exports = router;

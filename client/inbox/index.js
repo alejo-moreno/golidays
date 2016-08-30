@@ -1,20 +1,6 @@
 import page from 'page';
-import * as detail from 'client/detail';
 import * as template  from './template';
 
-
-page('/inbox', function (ctx, next) {
-    detail.renderHome();
-    if (!localStorage.inbox) {
-        $.getJSON('/inbox', function (data) {
-            localStorage.inbox = JSON.stringify(data);
-            template.renderInbox(data);
-        });
-    }
-    else {
-        template.renderInbox(JSON.parse(localStorage.inbox));
-    }
-});
 
 page('/inbox/:id/approve', function (ctx, next) {
     var inbox = JSON.parse(localStorage.inbox);
@@ -29,3 +15,15 @@ page('/inbox/:id/decline', function (ctx, next) {
     localStorage.inbox = JSON.stringify(inbox);
     template.declineItem(ctx.params.id);
 });
+
+export function getInbox() {
+    if (!localStorage.inbox) {
+        $.getJSON('/inbox', function (data) {
+            localStorage.inbox = JSON.stringify(data);
+            template.renderInbox(data);
+        });
+    }
+    else {
+        template.renderInbox(JSON.parse(localStorage.inbox));
+    }
+}

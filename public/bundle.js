@@ -39,7 +39,7 @@ function renderHome() {
     template.renderHome();
 }
 
-},{"./template":2,"page":31}],2:[function(require,module,exports){
+},{"./template":2,"page":33}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -47,7 +47,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _templateObject = _taggedTemplateLiteral(['\n        <div class="container">\n          <div class="row">    \n            <div class="section">\n              <h5>', '</h5>\n              <span class="new badge ', '">', '</span>        \n            </div>            \n          </div>\n          <div class="divider"></div>\n          <div class="row">            \n            <div class="col s8 m8 l10">\n              <ul class="collection">\n                <li class="collection-item avatar">\n                  <img src=', ' alt="item.fullname" class="circle">\n                  <span class="email-title">', '</span>                    \n                  <p class="grey-text ultra-small">', '</p>\n                </li>\n              </ul>\n            </div>\n            <div class="col s4 m4 l2 actions">\n              <a href="/inbox/', '/approve"><span><i class="material-icons up">thumb_up</i></span></a>\n              <a href="/inbox/', '/decline"><span><i class="material-icons down">thumb_down</i></span></a>              \n            </div>\n          </div>\n          <div class="content">\n            <p>', '</p>\n            <p> From: ', ' </p>\n            <p> To: ', ' </p>\n            <p> Duration: ', ' </p>            \n          </div>      \n        </div>'], ['\n        <div class="container">\n          <div class="row">    \n            <div class="section">\n              <h5>', '</h5>\n              <span class="new badge ', '">', '</span>        \n            </div>            \n          </div>\n          <div class="divider"></div>\n          <div class="row">            \n            <div class="col s8 m8 l10">\n              <ul class="collection">\n                <li class="collection-item avatar">\n                  <img src=', ' alt="item.fullname" class="circle">\n                  <span class="email-title">', '</span>                    \n                  <p class="grey-text ultra-small">', '</p>\n                </li>\n              </ul>\n            </div>\n            <div class="col s4 m4 l2 actions">\n              <a href="/inbox/', '/approve"><span><i class="material-icons up">thumb_up</i></span></a>\n              <a href="/inbox/', '/decline"><span><i class="material-icons down">thumb_down</i></span></a>              \n            </div>\n          </div>\n          <div class="content">\n            <p>', '</p>\n            <p> From: ', ' </p>\n            <p> To: ', ' </p>\n            <p> Duration: ', ' </p>            \n          </div>      \n        </div>']),
-    _templateObject2 = _taggedTemplateLiteral(['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select some item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  '], ['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select some item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  ']);
+    _templateObject2 = _taggedTemplateLiteral(['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select an item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  '], ['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select an item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  ']);
 
 exports.renderDetail = renderDetail;
 exports.renderHome = renderHome;
@@ -72,16 +72,17 @@ function renderHome() {
   $('.app-container').append(el);
 }
 
-},{"yo-yo":35}],3:[function(require,module,exports){
+},{"yo-yo":37}],3:[function(require,module,exports){
 'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.getInbox = getInbox;
 
 var _page = require('page');
 
 var _page2 = _interopRequireDefault(_page);
-
-var _detail = require('client/detail');
-
-var detail = _interopRequireWildcard(_detail);
 
 var _template = require('./template');
 
@@ -90,18 +91,6 @@ var template = _interopRequireWildcard(_template);
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _page2.default)('/inbox', function (ctx, next) {
-    detail.renderHome();
-    if (!localStorage.inbox) {
-        $.getJSON('/inbox', function (data) {
-            localStorage.inbox = JSON.stringify(data);
-            template.renderInbox(data);
-        });
-    } else {
-        template.renderInbox(JSON.parse(localStorage.inbox));
-    }
-});
 
 (0, _page2.default)('/inbox/:id/approve', function (ctx, next) {
     var inbox = JSON.parse(localStorage.inbox);
@@ -121,7 +110,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     template.declineItem(ctx.params.id);
 });
 
-},{"./template":4,"client/detail":1,"page":31}],4:[function(require,module,exports){
+function getInbox() {
+    if (!localStorage.inbox) {
+        $.getJSON('/inbox', function (data) {
+            localStorage.inbox = JSON.stringify(data);
+            template.renderInbox(data);
+        });
+    } else {
+        template.renderInbox(JSON.parse(localStorage.inbox));
+    }
+}
+
+},{"./template":4,"page":33}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -148,11 +148,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function renderInbox(inbox) {
+  var $sideNav = $('.gvacation-sidenav');
   var el = (0, _yoYo2.default)(_templateObject, inbox.map(function (item) {
     return renderItem(item);
   }));
-
-  $('.gvacation-sidenav').append(el);
+  $sideNav.empty();
+  $sideNav.append(el);
 
   //Add features of List.js Searching & Sorting
   var employees = new _list2.default('inbox', { valueNames: ['title'] });
@@ -181,12 +182,16 @@ function declineItem(id) {
   $item.find('a.secondary-content i').text('thumb_down').css('color', '#FF5252');
 }
 
-},{"list.js":12,"yo-yo":35}],5:[function(require,module,exports){
+},{"list.js":14,"yo-yo":37}],5:[function(require,module,exports){
 'use strict';
 
 var _page = require('page');
 
 var _page2 = _interopRequireDefault(_page);
+
+var _landing = require('client/landing');
+
+var _landing2 = _interopRequireDefault(_landing);
 
 var _inbox = require('client/inbox');
 
@@ -198,11 +203,60 @@ var _detail2 = _interopRequireDefault(_detail);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _page2.default)('/', '/inbox');
+(0, _page2.default)('/', '/home');
 
 (0, _page2.default)();
 
-},{"client/detail":1,"client/inbox":3,"page":31}],6:[function(require,module,exports){
+},{"client/detail":1,"client/inbox":3,"client/landing":6,"page":33}],6:[function(require,module,exports){
+'use strict';
+
+var _page = require('page');
+
+var _page2 = _interopRequireDefault(_page);
+
+var _inbox = require('client/inbox');
+
+var inbox = _interopRequireWildcard(_inbox);
+
+var _template = require('./template');
+
+var template = _interopRequireWildcard(_template);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _page2.default)('/home', function (ctx, next) {
+    template.renderHome();
+    inbox.getInbox();
+});
+
+},{"./template":7,"client/inbox":3,"page":33}],7:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select an item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  '], ['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select an item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  ']);
+
+exports.renderHome = renderHome;
+
+var _yoYo = require('yo-yo');
+
+var _yoYo2 = _interopRequireDefault(_yoYo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function renderHome() {
+  $('.app-container').empty();
+  var el = (0, _yoYo2.default)(_templateObject);
+  $('.app-container').append(el);
+}
+
+},{"yo-yo":37}],8:[function(require,module,exports){
 var document = require('global/document')
 var hyperx = require('hyperx')
 var onload = require('on-load')
@@ -344,9 +398,9 @@ function belCreateElement (tag, props, children) {
 module.exports = hyperx(belCreateElement)
 module.exports.createElement = belCreateElement
 
-},{"global/document":8,"hyperx":11,"on-load":30}],7:[function(require,module,exports){
+},{"global/document":10,"hyperx":13,"on-load":32}],9:[function(require,module,exports){
 
-},{}],8:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 (function (global){
 var topLevel = typeof global !== 'undefined' ? global :
     typeof window !== 'undefined' ? window : {}
@@ -365,7 +419,7 @@ if (typeof document !== 'undefined') {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"min-document":7}],9:[function(require,module,exports){
+},{"min-document":9}],11:[function(require,module,exports){
 (function (global){
 if (typeof window !== "undefined") {
     module.exports = window;
@@ -378,7 +432,7 @@ if (typeof window !== "undefined") {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],10:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 module.exports = attributeToProperty
 
 var transform = {
@@ -399,7 +453,7 @@ function attributeToProperty (h) {
   }
 }
 
-},{}],11:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 var attrToProp = require('hyperscript-attribute-to-property')
 
 var VAR = 0, TEXT = 1, OPEN = 2, CLOSE = 3, ATTR = 4
@@ -664,7 +718,7 @@ var closeRE = RegExp('^(' + [
 ].join('|') + ')(?:[\.#][a-zA-Z0-9\u007F-\uFFFF_:-]+)*$')
 function selfClosing (tag) { return closeRE.test(tag) }
 
-},{"hyperscript-attribute-to-property":10}],12:[function(require,module,exports){
+},{"hyperscript-attribute-to-property":12}],14:[function(require,module,exports){
 /*
 List.js 1.1.1
 By Jonny Strömberg (www.jonnystromberg.com, www.listjs.com)
@@ -938,7 +992,7 @@ window.List = List;
 
 })(window);
 
-},{"./src/add-async":13,"./src/filter":14,"./src/item":15,"./src/parse":16,"./src/search":17,"./src/sort":18,"./src/templater":19,"./src/utils/classes":20,"./src/utils/events":21,"./src/utils/extend":22,"./src/utils/get-attribute":23,"./src/utils/get-by-class":24,"./src/utils/index-of":25,"./src/utils/natural-sort":26,"./src/utils/to-array":27,"./src/utils/to-string":28}],13:[function(require,module,exports){
+},{"./src/add-async":15,"./src/filter":16,"./src/item":17,"./src/parse":18,"./src/search":19,"./src/sort":20,"./src/templater":21,"./src/utils/classes":22,"./src/utils/events":23,"./src/utils/extend":24,"./src/utils/get-attribute":25,"./src/utils/get-by-class":26,"./src/utils/index-of":27,"./src/utils/natural-sort":28,"./src/utils/to-array":29,"./src/utils/to-string":30}],15:[function(require,module,exports){
 module.exports = function(list) {
   var addAsync = function(values, callback, items) {
     var valuesToAdd = values.splice(0, 50);
@@ -956,7 +1010,7 @@ module.exports = function(list) {
   return addAsync;
 };
 
-},{}],14:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 module.exports = function(list) {
 
   // Add handlers
@@ -987,7 +1041,7 @@ module.exports = function(list) {
   };
 };
 
-},{}],15:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 module.exports = function(list) {
   return function(initValues, element, notCreate) {
     var item = this;
@@ -1049,7 +1103,7 @@ module.exports = function(list) {
   };
 };
 
-},{}],16:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 module.exports = function(list) {
 
   var Item = require('./item')(list);
@@ -1098,7 +1152,7 @@ module.exports = function(list) {
   };
 };
 
-},{"./item":15}],17:[function(require,module,exports){
+},{"./item":17}],19:[function(require,module,exports){
 module.exports = function(list) {
   var item,
     text,
@@ -1217,7 +1271,7 @@ module.exports = function(list) {
   return searchMethod;
 };
 
-},{}],18:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 module.exports = function(list) {
   list.sortFunction = list.sortFunction || function(itemA, itemB, options) {
     options.desc = options.order == "desc" ? true : false; // Natural sort uses this format
@@ -1309,7 +1363,7 @@ module.exports = function(list) {
   return sort;
 };
 
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 var Templater = function(list) {
   var itemSource,
     templater = this;
@@ -1480,7 +1534,7 @@ module.exports = function(list) {
   return new Templater(list);
 };
 
-},{}],20:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 /**
  * Module dependencies.
  */
@@ -1667,7 +1721,7 @@ ClassList.prototype.contains = function(name){
   return this.list ? this.list.contains(name) : !! ~index(this.array(), name);
 };
 
-},{"./index-of":25}],21:[function(require,module,exports){
+},{"./index-of":27}],23:[function(require,module,exports){
 var bind = window.addEventListener ? 'addEventListener' : 'attachEvent',
     unbind = window.removeEventListener ? 'removeEventListener' : 'detachEvent',
     prefix = bind !== 'addEventListener' ? 'on' : '',
@@ -1707,7 +1761,7 @@ exports.unbind = function(el, type, fn, capture){
   }
 };
 
-},{"./to-array":27}],22:[function(require,module,exports){
+},{"./to-array":29}],24:[function(require,module,exports){
 /*
  * Source: https://github.com/segmentio/extend
  */
@@ -1727,7 +1781,7 @@ module.exports = function extend (object) {
     return object;
 };
 
-},{}],23:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 /**
  * A cross-browser implementation of getAttribute.
  * Source found here: http://stackoverflow.com/a/3755343/361337 written by Vivin Paliath
@@ -1755,7 +1809,7 @@ module.exports = function(el, attr) {
   return result;
 };
 
-},{}],24:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 /**
  * A cross-browser implementation of getElementsByClass.
  * Heavily based on Dustin Diaz's function: http://dustindiaz.com/getelementsbyclass.
@@ -1813,7 +1867,7 @@ module.exports = (function() {
   }
 })();
 
-},{}],25:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 var indexOf = [].indexOf;
 
 module.exports = function(arr, obj){
@@ -1824,7 +1878,7 @@ module.exports = function(arr, obj){
   return -1;
 };
 
-},{}],26:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 /*
  * Natural Sort algorithm for Javascript - Version 0.8 - Released under MIT license
  * Author: Jim Palmer (based on chunking idea from Dave Koelle)
@@ -1874,7 +1928,7 @@ module.exports = function(a, b, opts) {
     return 0;
 };
 
-},{}],27:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 /**
  * Source: https://github.com/timoxley/to-array
  *
@@ -1909,7 +1963,7 @@ function isArray(arr) {
   return Object.prototype.toString.call(arr) === "[object Array]";
 }
 
-},{}],28:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 module.exports = function(s) {
   s = (s === undefined) ? "" : s;
   s = (s === null) ? "" : s;
@@ -1917,7 +1971,7 @@ module.exports = function(s) {
   return s;
 };
 
-},{}],29:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 // Create a range object for efficently rendering strings to elements.
 var range;
 
@@ -2500,7 +2554,7 @@ function morphdom(fromNode, toNode, options) {
 
 module.exports = morphdom;
 
-},{}],30:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 /* global MutationObserver */
 var document = require('global/document')
 var window = require('global/window')
@@ -2589,7 +2643,7 @@ function eachMutation (nodes, fn) {
   }
 }
 
-},{"global/document":8,"global/window":9}],31:[function(require,module,exports){
+},{"global/document":10,"global/window":11}],33:[function(require,module,exports){
 (function (process){
   /* globals require, module */
 
@@ -3215,12 +3269,12 @@ function eachMutation (nodes, fn) {
   page.sameOrigin = sameOrigin;
 
 }).call(this,require('_process'))
-},{"_process":34,"path-to-regexp":33}],32:[function(require,module,exports){
+},{"_process":36,"path-to-regexp":35}],34:[function(require,module,exports){
 module.exports = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 };
 
-},{}],33:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 var isarray = require('isarray')
 
 /**
@@ -3612,7 +3666,7 @@ function pathToRegexp (path, keys, options) {
   return stringToRegexp(path, keys, options)
 }
 
-},{"isarray":32}],34:[function(require,module,exports){
+},{"isarray":34}],36:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -3774,7 +3828,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],35:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 var bel = require('bel') // turns template tag into DOM elements
 var morphdom = require('morphdom') // efficiently diffs + morphs two DOM elements
 var defaultEvents = require('./update-events.js') // default events to be copied when dom elements update
@@ -3810,7 +3864,7 @@ module.exports.update = function (fromNode, toNode, opts) {
   }
 }
 
-},{"./update-events.js":36,"bel":6,"morphdom":29}],36:[function(require,module,exports){
+},{"./update-events.js":38,"bel":8,"morphdom":31}],38:[function(require,module,exports){
 module.exports = [
   // attribute events (can be set with attributes)
   'onclick',

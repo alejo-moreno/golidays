@@ -1,7 +1,10 @@
 import yo from 'yo-yo';
 import List from 'list.js';
 
+
+
 export function renderInbox(inbox) {
+  var $sideNav = $('.gvacation-sidenav');
   var el = yo`
     <li id="inbox" class="inbox">       
       <input class="search" placeholder='Search by employee'/>
@@ -11,8 +14,8 @@ export function renderInbox(inbox) {
       </ul>
     </li>
     `;
-
-  $('.gvacation-sidenav').append(el);
+  $sideNav.empty();
+  $sideNav.append(el);
 
   //Add features of List.js Searching & Sorting
   var employees = new List('inbox', { valueNames: ['title'] });

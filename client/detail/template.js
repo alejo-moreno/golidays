@@ -48,7 +48,7 @@ export function renderHome() {
             </div>
             <div class="col s10">
               <span class="black-text">
-                Welcome to Golidays. Select some item on the side menu to start working.
+                Welcome to Golidays. Select an item on the side menu to start working.
               </span>
             </div>
           </div>
