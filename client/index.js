@@ -4,5 +4,4 @@ import detail from 'client/detail';
 
 page('/', '/inbox');
 
-
 page();

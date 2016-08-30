@@ -1,5 +1,4 @@
 import yo from 'yo-yo';
-import $ from 'jquery';
 
 export function renderDetail(item) {
   $('.app-container').empty();
