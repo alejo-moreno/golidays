@@ -8,7 +8,13 @@
         }
         span.badge.new:after{
           content: " ";
-        }        
+        }
+        span.badge.approved{
+          background-color: #03A9F4 !important;          
+        }
+        span.badge.declined{
+          background-color: #FF5252 !important;          
+        }                
     }
     .collection {
         border: none;
@@ -18,5 +24,19 @@
     }
     .actions {
         padding-top: 25px;
+        i.up {
+            color: #03A9F4;
+            &:hover{
+                transition: all 1s ease-out;
+                transform: translate(0, -10px);  
+            }
+        }
+        i.down {
+            color:#FF5252;
+            &:hover{
+                transition: all 1s ease-out;
+                transform: translate(0, 10px);  
+            }            
+        }
     }
 }

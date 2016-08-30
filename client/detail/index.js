@@ -2,7 +2,7 @@ import page from 'page';
 import * as template  from './template';
 
 page('/inbox/:id', function (ctx, next) {
-    var itemId = ctx.params.id;
+    var itemId = ctx.params.id;    
     if (!localStorage.inbox) {
         $.getJSON('/inbox', function (data) {
             localStorage.inbox = JSON.stringify(data);

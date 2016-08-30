@@ -1,5 +1,4 @@
 import yo from 'yo-yo';
-import $ from 'jquery';
 import List from 'list.js';
 
 export function renderInbox(inbox) {
@@ -21,16 +20,34 @@ export function renderInbox(inbox) {
 
 function renderItem(item) {
   return yo`  
-    <li class="collection-item avatar">
-     <a href="/inbox/${item.id}">
+    <li class="collection-item avatar" data-id=${item.id} >
+     <a href="/inbox/${item.id}" onclick=${selectItem.bind(this)}>
       <img src="${item.picture}" alt="item.fullname" class="circle">           
       <span class="title">${item.fullname}</span>
-      <p>${item.duration} <br>
+      <p class="grey-text">${item.duration} <br>
         ${item.applicationDate}
       </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-     </a> 
-    </li>
-  `
-    ;
+      <a href="#!" class="secondary-content"><i class="material-icons ${item.status}">${item.status == 'approved' ? 'thumb_up' : item.status == 'declined' ? 'thumb_down' : 'grade'}</i></a>
+     </a > 
+    </li >
+    `;
+  function selectItem(el) {
+    $('.gvacation-sidenav .collection').find('*').removeClass('active');
+    var item = $(el.currentTarget).closest('li').addClass('active');
+    if ($(window).width() <= 992) {
+      $('.button-collapse').sideNav('hide');
+    }
+  }
+}
+
+export function approveItem(id) {
+  $('.app-container').find('.section .badge').removeClass('declined').addClass('approved');
+  var $item = $('.gvacation-sidenav').find(`.collection li[data-id=${id}]`);
+  $item.find('a.secondary-content i').text('thumb_up').css('color', '#03A9F4');
+}
+
+export function declineItem(id) {
+  $('.app-container').find('.section .badge').removeClass('approved').addClass('declined');
+  var $item = $('.gvacation-sidenav').find(`.collection li[data-id=${id}]`);
+  $item.find('a.secondary-content i').text('thumb_down').css('color', '#FF5252');
 }

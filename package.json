@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "a gmail inspired app for accept and decline vacations",
   "main": "index.js",
-  "scripts": {
+  "scripts": {    
     "public": "mkdir -p public/fonts/roboto",
     "assets": "node-sass -o public/ client/app.scss && cp -r node_modules/materialize-css/fonts/roboto/. public/fonts/roboto",
     "build-js": "NODE_PATH=. browserify -t [ babelify --presets [es2015] ] client/index.js > public/bundle.js",

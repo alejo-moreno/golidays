@@ -2,6 +2,7 @@
   .inbox {    
       input {
           text-transform: capitalize;
+          padding: 0px 10px;
       }  
       input::-webkit-input-placeholder {
         text-align: center;
@@ -21,8 +22,23 @@
        top: 10px;
      }
       .collection li {
+          &:hover {
+            background-color: #FFCDD2;                   
+          }
+          &:focus {
+            background-color: #FFCDD2;                   
+          }
+          &.active {
+            background-color: #FFCDD2;
+          }
           a span,p{
             color:black;      
+          }          
+          i.approved {
+            color:#03A9F4
+          }
+          i.declined {
+            color:#FF5252
           }
       }      
   }
