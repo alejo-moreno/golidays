@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "public": "mkdir -p public/fonts/roboto",
-    "assets": "node-sass -o public/ client/app.scss && cp -r node_modules/materialize-css/fonts/roboto/. public/fonts/roboto",
-    "build-js": "NODE_PATH=. browserify -t [ babelify --presets [es2015] ] client/index.js > public/bundle.js",
-    "watch-js": "NODE_PATH=. watchify -t [ babelify --presets [es2015] ] client/index.js -o public/bundle.js -v",
+    "assets": "node-sass -o public/ src/app.scss && cp -r node_modules/materialize-css/fonts/roboto/. public/fonts/roboto",
+    "build-js": "NODE_PATH=. browserify -t [ babelify --presets [es2015] ] src/index.js > public/bundle.js",
+    "watch-js": "NODE_PATH=. watchify -t [ babelify --presets [es2015] ] src/index.js -o public/bundle.js -v",
     "build": "npm run public && npm run assets && npm run build-js ",
     "serve": "NODE_PATH=. babel-node bin/www.js --presets es2015",
     "test": "npm run public && npm run assets && npm run watch-js & npm run serve",

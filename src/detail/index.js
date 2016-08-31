@@ -1,8 +1,10 @@
 import page from 'page';
 import * as template  from './template';
 
+/*GET specific holiday request detail*/
 page('/inbox/:id', function (ctx, next) {
     var itemId = ctx.params.id;
+    //Use localStorage for speed up requests
     if (!localStorage.inbox) {
         $.getJSON('/inbox', function (data) {
             localStorage.inbox = JSON.stringify(data);
@@ -15,6 +17,3 @@ page('/inbox/:id', function (ctx, next) {
     }
 })
 
-export function renderHome() {
-    template.renderHome();
-}

@@ -1,262 +1,4 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.renderHome = renderHome;
-
-var _page = require('page');
-
-var _page2 = _interopRequireDefault(_page);
-
-var _template = require('./template');
-
-var template = _interopRequireWildcard(_template);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _page2.default)('/inbox/:id', function (ctx, next) {
-    var itemId = ctx.params.id;
-    if (!localStorage.inbox) {
-        $.getJSON('/inbox', function (data) {
-            localStorage.inbox = JSON.stringify(data);
-            template.renderDetail(data.filter(function (item) {
-                return item.id == itemId;
-            })[0]);
-        });
-    } else {
-        var inbox = JSON.parse(localStorage.inbox);
-        template.renderDetail(inbox.filter(function (item) {
-            return item.id == itemId;
-        })[0]);
-    }
-});
-
-function renderHome() {
-    template.renderHome();
-}
-
-},{"./template":2,"page":33}],2:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _templateObject = _taggedTemplateLiteral(['\n        <div class="container">\n          <div class="row">    \n            <div class="section">\n              <h5>', '</h5>\n              <span class="new badge ', '">', '</span>        \n            </div>            \n          </div>\n          <div class="divider"></div>\n          <div class="row">            \n            <div class="col s8 m8 l10">\n              <ul class="collection">\n                <li class="collection-item avatar">\n                  <img src=', ' alt="item.fullname" class="circle">\n                  <span class="email-title">', '</span>                    \n                  <p class="grey-text ultra-small">', '</p>\n                </li>\n              </ul>\n            </div>\n            <div class="col s4 m4 l2 actions">\n              <a href="/inbox/', '/approve"><span><i class="material-icons up">thumb_up</i></span></a>\n              <a href="/inbox/', '/decline"><span><i class="material-icons down">thumb_down</i></span></a>              \n            </div>\n          </div>\n          <div class="content">\n            <p>', '</p>\n            <p> From: ', ' </p>\n            <p> To: ', ' </p>\n            <p> Duration: ', ' </p>            \n          </div>      \n        </div>'], ['\n        <div class="container">\n          <div class="row">    \n            <div class="section">\n              <h5>', '</h5>\n              <span class="new badge ', '">', '</span>        \n            </div>            \n          </div>\n          <div class="divider"></div>\n          <div class="row">            \n            <div class="col s8 m8 l10">\n              <ul class="collection">\n                <li class="collection-item avatar">\n                  <img src=', ' alt="item.fullname" class="circle">\n                  <span class="email-title">', '</span>                    \n                  <p class="grey-text ultra-small">', '</p>\n                </li>\n              </ul>\n            </div>\n            <div class="col s4 m4 l2 actions">\n              <a href="/inbox/', '/approve"><span><i class="material-icons up">thumb_up</i></span></a>\n              <a href="/inbox/', '/decline"><span><i class="material-icons down">thumb_down</i></span></a>              \n            </div>\n          </div>\n          <div class="content">\n            <p>', '</p>\n            <p> From: ', ' </p>\n            <p> To: ', ' </p>\n            <p> Duration: ', ' </p>            \n          </div>      \n        </div>']),
-    _templateObject2 = _taggedTemplateLiteral(['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select an item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  '], ['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select an item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  ']);
-
-exports.renderDetail = renderDetail;
-exports.renderHome = renderHome;
-
-var _yoYo = require('yo-yo');
-
-var _yoYo2 = _interopRequireDefault(_yoYo);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-function renderDetail(item) {
-  $('.app-container').empty();
-  var el = (0, _yoYo2.default)(_templateObject, item.fullname, item.status, item.status, item.picture, item.fullname, item.applicationDate, item.id, item.id, item.comment, item.dateFrom, item.dateTo, item.duration);
-  $('.app-container').append(el);
-}
-
-function renderHome() {
-  $('.app-container').empty();
-  var el = (0, _yoYo2.default)(_templateObject2);
-  $('.app-container').append(el);
-}
-
-},{"yo-yo":37}],3:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.getInbox = getInbox;
-
-var _page = require('page');
-
-var _page2 = _interopRequireDefault(_page);
-
-var _template = require('./template');
-
-var template = _interopRequireWildcard(_template);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _page2.default)('/inbox/:id/approve', function (ctx, next) {
-    var inbox = JSON.parse(localStorage.inbox);
-    inbox.filter(function (item) {
-        return item.id == ctx.params.id;
-    })[0].status = 'approved';
-    localStorage.inbox = JSON.stringify(inbox);
-    template.approveItem(ctx.params.id);
-});
-
-(0, _page2.default)('/inbox/:id/decline', function (ctx, next) {
-    var inbox = JSON.parse(localStorage.inbox);
-    inbox.filter(function (item) {
-        return item.id == ctx.params.id;
-    })[0].status = 'declined';
-    localStorage.inbox = JSON.stringify(inbox);
-    template.declineItem(ctx.params.id);
-});
-
-function getInbox() {
-    if (!localStorage.inbox) {
-        $.getJSON('/inbox', function (data) {
-            localStorage.inbox = JSON.stringify(data);
-            template.renderInbox(data);
-        });
-    } else {
-        template.renderInbox(JSON.parse(localStorage.inbox));
-    }
-}
-
-},{"./template":4,"page":33}],4:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _templateObject = _taggedTemplateLiteral(['\n    <li id="inbox" class="inbox">       \n      <input class="search" placeholder=\'Search by employee\'/>\n      <i class="material-icons">search</i>\n      <ul class="collection list">\n        ', '     \n      </ul>\n    </li>\n    '], ['\n    <li id="inbox" class="inbox">       \n      <input class="search" placeholder=\'Search by employee\'/>\n      <i class="material-icons">search</i>\n      <ul class="collection list">\n        ', '     \n      </ul>\n    </li>\n    ']),
-    _templateObject2 = _taggedTemplateLiteral(['  \n    <li class="collection-item avatar" data-id=', ' >\n     <a href="/inbox/', '" onclick=', '>\n      <img src="', '" alt="item.fullname" class="circle">           \n      <span class="title">', '</span>\n      <p class="grey-text">', ' <br>\n        ', '\n      </p>\n      <a href="#!" class="secondary-content"><i class="material-icons ', '">', '</i></a>\n     </a > \n    </li >\n    '], ['  \n    <li class="collection-item avatar" data-id=', ' >\n     <a href="/inbox/', '" onclick=', '>\n      <img src="', '" alt="item.fullname" class="circle">           \n      <span class="title">', '</span>\n      <p class="grey-text">', ' <br>\n        ', '\n      </p>\n      <a href="#!" class="secondary-content"><i class="material-icons ', '">', '</i></a>\n     </a > \n    </li >\n    ']);
-
-exports.renderInbox = renderInbox;
-exports.approveItem = approveItem;
-exports.declineItem = declineItem;
-
-var _yoYo = require('yo-yo');
-
-var _yoYo2 = _interopRequireDefault(_yoYo);
-
-var _list = require('list.js');
-
-var _list2 = _interopRequireDefault(_list);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-function renderInbox(inbox) {
-  var $sideNav = $('.gvacation-sidenav');
-  var el = (0, _yoYo2.default)(_templateObject, inbox.map(function (item) {
-    return renderItem(item);
-  }));
-  $sideNav.empty();
-  $sideNav.append(el);
-
-  //Add features of List.js Searching & Sorting
-  var employees = new _list2.default('inbox', { valueNames: ['title'] });
-}
-
-function renderItem(item) {
-  return (0, _yoYo2.default)(_templateObject2, item.id, item.id, selectItem.bind(this), item.picture, item.fullname, item.duration, item.applicationDate, item.status, item.status == 'approved' ? 'thumb_up' : item.status == 'declined' ? 'thumb_down' : 'grade');
-  function selectItem(el) {
-    $('.gvacation-sidenav .collection').find('*').removeClass('active');
-    var item = $(el.currentTarget).closest('li').addClass('active');
-    if ($(window).width() <= 992) {
-      $('.button-collapse').sideNav('hide');
-    }
-  }
-}
-
-function approveItem(id) {
-  $('.app-container').find('.section .badge').removeClass('declined').addClass('approved');
-  var $item = $('.gvacation-sidenav').find('.collection li[data-id=' + id + ']');
-  $item.find('a.secondary-content i').text('thumb_up').css('color', '#03A9F4');
-}
-
-function declineItem(id) {
-  $('.app-container').find('.section .badge').removeClass('approved').addClass('declined');
-  var $item = $('.gvacation-sidenav').find('.collection li[data-id=' + id + ']');
-  $item.find('a.secondary-content i').text('thumb_down').css('color', '#FF5252');
-}
-
-},{"list.js":14,"yo-yo":37}],5:[function(require,module,exports){
-'use strict';
-
-var _page = require('page');
-
-var _page2 = _interopRequireDefault(_page);
-
-var _landing = require('client/landing');
-
-var _landing2 = _interopRequireDefault(_landing);
-
-var _inbox = require('client/inbox');
-
-var _inbox2 = _interopRequireDefault(_inbox);
-
-var _detail = require('client/detail');
-
-var _detail2 = _interopRequireDefault(_detail);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _page2.default)('/', '/home');
-
-(0, _page2.default)();
-
-},{"client/detail":1,"client/inbox":3,"client/landing":6,"page":33}],6:[function(require,module,exports){
-'use strict';
-
-var _page = require('page');
-
-var _page2 = _interopRequireDefault(_page);
-
-var _inbox = require('client/inbox');
-
-var inbox = _interopRequireWildcard(_inbox);
-
-var _template = require('./template');
-
-var template = _interopRequireWildcard(_template);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _page2.default)('/home', function (ctx, next) {
-    template.renderHome();
-    inbox.getInbox();
-});
-
-},{"./template":7,"client/inbox":3,"page":33}],7:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _templateObject = _taggedTemplateLiteral(['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select an item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  '], ['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select an item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  ']);
-
-exports.renderHome = renderHome;
-
-var _yoYo = require('yo-yo');
-
-var _yoYo2 = _interopRequireDefault(_yoYo);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-function renderHome() {
-  $('.app-container').empty();
-  var el = (0, _yoYo2.default)(_templateObject);
-  $('.app-container').append(el);
-}
-
-},{"yo-yo":37}],8:[function(require,module,exports){
 var document = require('global/document')
 var hyperx = require('hyperx')
 var onload = require('on-load')
@@ -398,9 +140,9 @@ function belCreateElement (tag, props, children) {
 module.exports = hyperx(belCreateElement)
 module.exports.createElement = belCreateElement
 
-},{"global/document":10,"hyperx":13,"on-load":32}],9:[function(require,module,exports){
+},{"global/document":3,"hyperx":6,"on-load":25}],2:[function(require,module,exports){
 
-},{}],10:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 (function (global){
 var topLevel = typeof global !== 'undefined' ? global :
     typeof window !== 'undefined' ? window : {}
@@ -419,7 +161,7 @@ if (typeof document !== 'undefined') {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"min-document":9}],11:[function(require,module,exports){
+},{"min-document":2}],4:[function(require,module,exports){
 (function (global){
 if (typeof window !== "undefined") {
     module.exports = window;
@@ -432,7 +174,7 @@ if (typeof window !== "undefined") {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],12:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports = attributeToProperty
 
 var transform = {
@@ -453,7 +195,7 @@ function attributeToProperty (h) {
   }
 }
 
-},{}],13:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 var attrToProp = require('hyperscript-attribute-to-property')
 
 var VAR = 0, TEXT = 1, OPEN = 2, CLOSE = 3, ATTR = 4
@@ -718,7 +460,7 @@ var closeRE = RegExp('^(' + [
 ].join('|') + ')(?:[\.#][a-zA-Z0-9\u007F-\uFFFF_:-]+)*$')
 function selfClosing (tag) { return closeRE.test(tag) }
 
-},{"hyperscript-attribute-to-property":12}],14:[function(require,module,exports){
+},{"hyperscript-attribute-to-property":5}],7:[function(require,module,exports){
 /*
 List.js 1.1.1
 By Jonny Strömberg (www.jonnystromberg.com, www.listjs.com)
@@ -992,7 +734,7 @@ window.List = List;
 
 })(window);
 
-},{"./src/add-async":15,"./src/filter":16,"./src/item":17,"./src/parse":18,"./src/search":19,"./src/sort":20,"./src/templater":21,"./src/utils/classes":22,"./src/utils/events":23,"./src/utils/extend":24,"./src/utils/get-attribute":25,"./src/utils/get-by-class":26,"./src/utils/index-of":27,"./src/utils/natural-sort":28,"./src/utils/to-array":29,"./src/utils/to-string":30}],15:[function(require,module,exports){
+},{"./src/add-async":8,"./src/filter":9,"./src/item":10,"./src/parse":11,"./src/search":12,"./src/sort":13,"./src/templater":14,"./src/utils/classes":15,"./src/utils/events":16,"./src/utils/extend":17,"./src/utils/get-attribute":18,"./src/utils/get-by-class":19,"./src/utils/index-of":20,"./src/utils/natural-sort":21,"./src/utils/to-array":22,"./src/utils/to-string":23}],8:[function(require,module,exports){
 module.exports = function(list) {
   var addAsync = function(values, callback, items) {
     var valuesToAdd = values.splice(0, 50);
@@ -1010,7 +752,7 @@ module.exports = function(list) {
   return addAsync;
 };
 
-},{}],16:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 module.exports = function(list) {
 
   // Add handlers
@@ -1041,7 +783,7 @@ module.exports = function(list) {
   };
 };
 
-},{}],17:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 module.exports = function(list) {
   return function(initValues, element, notCreate) {
     var item = this;
@@ -1103,7 +845,7 @@ module.exports = function(list) {
   };
 };
 
-},{}],18:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports = function(list) {
 
   var Item = require('./item')(list);
@@ -1152,7 +894,7 @@ module.exports = function(list) {
   };
 };
 
-},{"./item":17}],19:[function(require,module,exports){
+},{"./item":10}],12:[function(require,module,exports){
 module.exports = function(list) {
   var item,
     text,
@@ -1271,7 +1013,7 @@ module.exports = function(list) {
   return searchMethod;
 };
 
-},{}],20:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 module.exports = function(list) {
   list.sortFunction = list.sortFunction || function(itemA, itemB, options) {
     options.desc = options.order == "desc" ? true : false; // Natural sort uses this format
@@ -1363,7 +1105,7 @@ module.exports = function(list) {
   return sort;
 };
 
-},{}],21:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 var Templater = function(list) {
   var itemSource,
     templater = this;
@@ -1534,7 +1276,7 @@ module.exports = function(list) {
   return new Templater(list);
 };
 
-},{}],22:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 /**
  * Module dependencies.
  */
@@ -1721,7 +1463,7 @@ ClassList.prototype.contains = function(name){
   return this.list ? this.list.contains(name) : !! ~index(this.array(), name);
 };
 
-},{"./index-of":27}],23:[function(require,module,exports){
+},{"./index-of":20}],16:[function(require,module,exports){
 var bind = window.addEventListener ? 'addEventListener' : 'attachEvent',
     unbind = window.removeEventListener ? 'removeEventListener' : 'detachEvent',
     prefix = bind !== 'addEventListener' ? 'on' : '',
@@ -1761,7 +1503,7 @@ exports.unbind = function(el, type, fn, capture){
   }
 };
 
-},{"./to-array":29}],24:[function(require,module,exports){
+},{"./to-array":22}],17:[function(require,module,exports){
 /*
  * Source: https://github.com/segmentio/extend
  */
@@ -1781,7 +1523,7 @@ module.exports = function extend (object) {
     return object;
 };
 
-},{}],25:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 /**
  * A cross-browser implementation of getAttribute.
  * Source found here: http://stackoverflow.com/a/3755343/361337 written by Vivin Paliath
@@ -1809,7 +1551,7 @@ module.exports = function(el, attr) {
   return result;
 };
 
-},{}],26:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /**
  * A cross-browser implementation of getElementsByClass.
  * Heavily based on Dustin Diaz's function: http://dustindiaz.com/getelementsbyclass.
@@ -1867,7 +1609,7 @@ module.exports = (function() {
   }
 })();
 
-},{}],27:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 var indexOf = [].indexOf;
 
 module.exports = function(arr, obj){
@@ -1878,7 +1620,7 @@ module.exports = function(arr, obj){
   return -1;
 };
 
-},{}],28:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 /*
  * Natural Sort algorithm for Javascript - Version 0.8 - Released under MIT license
  * Author: Jim Palmer (based on chunking idea from Dave Koelle)
@@ -1928,7 +1670,7 @@ module.exports = function(a, b, opts) {
     return 0;
 };
 
-},{}],29:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 /**
  * Source: https://github.com/timoxley/to-array
  *
@@ -1963,7 +1705,7 @@ function isArray(arr) {
   return Object.prototype.toString.call(arr) === "[object Array]";
 }
 
-},{}],30:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 module.exports = function(s) {
   s = (s === undefined) ? "" : s;
   s = (s === null) ? "" : s;
@@ -1971,7 +1713,7 @@ module.exports = function(s) {
   return s;
 };
 
-},{}],31:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 // Create a range object for efficently rendering strings to elements.
 var range;
 
@@ -2554,7 +2296,7 @@ function morphdom(fromNode, toNode, options) {
 
 module.exports = morphdom;
 
-},{}],32:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 /* global MutationObserver */
 var document = require('global/document')
 var window = require('global/window')
@@ -2643,7 +2385,7 @@ function eachMutation (nodes, fn) {
   }
 }
 
-},{"global/document":10,"global/window":11}],33:[function(require,module,exports){
+},{"global/document":3,"global/window":4}],26:[function(require,module,exports){
 (function (process){
   /* globals require, module */
 
@@ -3269,12 +3011,12 @@ function eachMutation (nodes, fn) {
   page.sameOrigin = sameOrigin;
 
 }).call(this,require('_process'))
-},{"_process":36,"path-to-regexp":35}],34:[function(require,module,exports){
+},{"_process":29,"path-to-regexp":28}],27:[function(require,module,exports){
 module.exports = Array.isArray || function (arr) {
   return Object.prototype.toString.call(arr) == '[object Array]';
 };
 
-},{}],35:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 var isarray = require('isarray')
 
 /**
@@ -3666,7 +3408,7 @@ function pathToRegexp (path, keys, options) {
   return stringToRegexp(path, keys, options)
 }
 
-},{"isarray":34}],36:[function(require,module,exports){
+},{"isarray":27}],29:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -3828,7 +3570,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],37:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 var bel = require('bel') // turns template tag into DOM elements
 var morphdom = require('morphdom') // efficiently diffs + morphs two DOM elements
 var defaultEvents = require('./update-events.js') // default events to be copied when dom elements update
@@ -3864,7 +3606,7 @@ module.exports.update = function (fromNode, toNode, opts) {
   }
 }
 
-},{"./update-events.js":38,"bel":8,"morphdom":31}],38:[function(require,module,exports){
+},{"./update-events.js":31,"bel":1,"morphdom":24}],31:[function(require,module,exports){
 module.exports = [
   // attribute events (can be set with attributes)
   'onclick',
@@ -3902,4 +3644,262 @@ module.exports = [
   'onfocusout'
 ]
 
-},{}]},{},[5]);
+},{}],32:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.renderHome = renderHome;
+
+var _page = require('page');
+
+var _page2 = _interopRequireDefault(_page);
+
+var _template = require('./template');
+
+var template = _interopRequireWildcard(_template);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _page2.default)('/inbox/:id', function (ctx, next) {
+    var itemId = ctx.params.id;
+    if (!localStorage.inbox) {
+        $.getJSON('/inbox', function (data) {
+            localStorage.inbox = JSON.stringify(data);
+            template.renderDetail(data.filter(function (item) {
+                return item.id == itemId;
+            })[0]);
+        });
+    } else {
+        var inbox = JSON.parse(localStorage.inbox);
+        template.renderDetail(inbox.filter(function (item) {
+            return item.id == itemId;
+        })[0]);
+    }
+});
+
+function renderHome() {
+    template.renderHome();
+}
+
+},{"./template":33,"page":26}],33:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n        <div class="container">\n          <div class="row">    \n            <div class="section">\n              <h5>', '</h5>\n              <span class="new badge ', '">', '</span>        \n            </div>            \n          </div>\n          <div class="divider"></div>\n          <div class="row">            \n            <div class="col s8 m8 l10">\n              <ul class="collection">\n                <li class="collection-item avatar">\n                  <img src=', ' alt="item.fullname" class="circle">\n                  <span class="email-title">', '</span>                    \n                  <p class="grey-text ultra-small">', '</p>\n                </li>\n              </ul>\n            </div>\n            <div class="col s4 m4 l2 actions">\n              <a href="/inbox/', '/approve"><span><i class="material-icons up">thumb_up</i></span></a>\n              <a href="/inbox/', '/decline"><span><i class="material-icons down">thumb_down</i></span></a>              \n            </div>\n          </div>\n          <div class="content">\n            <p>', '</p>\n            <p> From: ', ' </p>\n            <p> To: ', ' </p>\n            <p> Duration: ', ' </p>            \n          </div>      \n        </div>'], ['\n        <div class="container">\n          <div class="row">    \n            <div class="section">\n              <h5>', '</h5>\n              <span class="new badge ', '">', '</span>        \n            </div>            \n          </div>\n          <div class="divider"></div>\n          <div class="row">            \n            <div class="col s8 m8 l10">\n              <ul class="collection">\n                <li class="collection-item avatar">\n                  <img src=', ' alt="item.fullname" class="circle">\n                  <span class="email-title">', '</span>                    \n                  <p class="grey-text ultra-small">', '</p>\n                </li>\n              </ul>\n            </div>\n            <div class="col s4 m4 l2 actions">\n              <a href="/inbox/', '/approve"><span><i class="material-icons up">thumb_up</i></span></a>\n              <a href="/inbox/', '/decline"><span><i class="material-icons down">thumb_down</i></span></a>              \n            </div>\n          </div>\n          <div class="content">\n            <p>', '</p>\n            <p> From: ', ' </p>\n            <p> To: ', ' </p>\n            <p> Duration: ', ' </p>            \n          </div>      \n        </div>']),
+    _templateObject2 = _taggedTemplateLiteral(['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select an item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  '], ['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select an item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  ']);
+
+exports.renderDetail = renderDetail;
+exports.renderHome = renderHome;
+
+var _yoYo = require('yo-yo');
+
+var _yoYo2 = _interopRequireDefault(_yoYo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function renderDetail(item) {
+  $('.app-container').empty();
+  var el = (0, _yoYo2.default)(_templateObject, item.fullname, item.status, item.status, item.picture, item.fullname, item.applicationDate, item.id, item.id, item.comment, item.dateFrom, item.dateTo, item.duration);
+  $('.app-container').append(el);
+}
+
+function renderHome() {
+  $('.app-container').empty();
+  var el = (0, _yoYo2.default)(_templateObject2);
+  $('.app-container').append(el);
+}
+
+},{"yo-yo":30}],34:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.getInbox = getInbox;
+
+var _page = require('page');
+
+var _page2 = _interopRequireDefault(_page);
+
+var _template = require('./template');
+
+var template = _interopRequireWildcard(_template);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _page2.default)('/inbox/:id/approve', function (ctx, next) {
+    var inbox = JSON.parse(localStorage.inbox);
+    inbox.filter(function (item) {
+        return item.id == ctx.params.id;
+    })[0].status = 'approved';
+    localStorage.inbox = JSON.stringify(inbox);
+    template.approveItem(ctx.params.id);
+});
+
+(0, _page2.default)('/inbox/:id/decline', function (ctx, next) {
+    var inbox = JSON.parse(localStorage.inbox);
+    inbox.filter(function (item) {
+        return item.id == ctx.params.id;
+    })[0].status = 'declined';
+    localStorage.inbox = JSON.stringify(inbox);
+    template.declineItem(ctx.params.id);
+});
+
+function getInbox() {
+    if (!localStorage.inbox) {
+        $.getJSON('/inbox', function (data) {
+            localStorage.inbox = JSON.stringify(data);
+            template.renderInbox(data);
+        });
+    } else {
+        template.renderInbox(JSON.parse(localStorage.inbox));
+    }
+}
+
+},{"./template":35,"page":26}],35:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['\n    <li id="inbox" class="inbox">       \n      <input class="search" placeholder=\'Search by employee\'/>\n      <i class="material-icons">search</i>\n      <ul class="collection list">\n        ', '     \n      </ul>\n    </li>\n    '], ['\n    <li id="inbox" class="inbox">       \n      <input class="search" placeholder=\'Search by employee\'/>\n      <i class="material-icons">search</i>\n      <ul class="collection list">\n        ', '     \n      </ul>\n    </li>\n    ']),
+    _templateObject2 = _taggedTemplateLiteral(['  \n    <li class="collection-item avatar" data-id=', ' >\n     <a href="/inbox/', '" onclick=', '>\n      <img src="', '" alt="item.fullname" class="circle">           \n      <span class="title">', '</span>\n      <p class="grey-text">', ' <br>\n        ', '\n      </p>\n      <a href="#!" class="secondary-content"><i class="material-icons ', '">', '</i></a>\n     </a > \n    </li >\n    '], ['  \n    <li class="collection-item avatar" data-id=', ' >\n     <a href="/inbox/', '" onclick=', '>\n      <img src="', '" alt="item.fullname" class="circle">           \n      <span class="title">', '</span>\n      <p class="grey-text">', ' <br>\n        ', '\n      </p>\n      <a href="#!" class="secondary-content"><i class="material-icons ', '">', '</i></a>\n     </a > \n    </li >\n    ']);
+
+exports.renderInbox = renderInbox;
+exports.approveItem = approveItem;
+exports.declineItem = declineItem;
+
+var _yoYo = require('yo-yo');
+
+var _yoYo2 = _interopRequireDefault(_yoYo);
+
+var _list = require('list.js');
+
+var _list2 = _interopRequireDefault(_list);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function renderInbox(inbox) {
+  var $sideNav = $('.gvacation-sidenav');
+  var el = (0, _yoYo2.default)(_templateObject, inbox.map(function (item) {
+    return renderItem(item);
+  }));
+  $sideNav.empty();
+  $sideNav.append(el);
+
+  //Add features of List.js Searching & Sorting
+  var employees = new _list2.default('inbox', { valueNames: ['title'] });
+}
+
+function renderItem(item) {
+  return (0, _yoYo2.default)(_templateObject2, item.id, item.id, selectItem.bind(this), item.picture, item.fullname, item.duration, item.applicationDate, item.status, item.status == 'approved' ? 'thumb_up' : item.status == 'declined' ? 'thumb_down' : 'grade');
+  function selectItem(el) {
+    $('.gvacation-sidenav .collection').find('*').removeClass('active');
+    var item = $(el.currentTarget).closest('li').addClass('active');
+    if ($(window).width() <= 992) {
+      $('.button-collapse').sideNav('hide');
+    }
+  }
+}
+
+function approveItem(id) {
+  $('.app-container').find('.section .badge').removeClass('declined').addClass('approved');
+  var $item = $('.gvacation-sidenav').find('.collection li[data-id=' + id + ']');
+  $item.find('a.secondary-content i').text('thumb_up').css('color', '#03A9F4');
+}
+
+function declineItem(id) {
+  $('.app-container').find('.section .badge').removeClass('approved').addClass('declined');
+  var $item = $('.gvacation-sidenav').find('.collection li[data-id=' + id + ']');
+  $item.find('a.secondary-content i').text('thumb_down').css('color', '#FF5252');
+}
+
+},{"list.js":7,"yo-yo":30}],36:[function(require,module,exports){
+'use strict';
+
+var _page = require('page');
+
+var _page2 = _interopRequireDefault(_page);
+
+var _landing = require('src/landing');
+
+var _landing2 = _interopRequireDefault(_landing);
+
+var _inbox = require('src/inbox');
+
+var _inbox2 = _interopRequireDefault(_inbox);
+
+var _detail = require('src/detail');
+
+var _detail2 = _interopRequireDefault(_detail);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _page2.default)('/', '/home');
+
+(0, _page2.default)();
+
+},{"page":26,"src/detail":32,"src/inbox":34,"src/landing":37}],37:[function(require,module,exports){
+'use strict';
+
+var _page = require('page');
+
+var _page2 = _interopRequireDefault(_page);
+
+var _inbox = require('src/inbox');
+
+var inbox = _interopRequireWildcard(_inbox);
+
+var _template = require('./template');
+
+var template = _interopRequireWildcard(_template);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _page2.default)('/home', function (ctx, next) {
+    template.renderHome();
+    inbox.getInbox();
+});
+
+},{"./template":38,"page":26,"src/inbox":34}],38:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _templateObject = _taggedTemplateLiteral(['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select an item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  '], ['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select an item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  ']);
+
+exports.renderHome = renderHome;
+
+var _yoYo = require('yo-yo');
+
+var _yoYo2 = _interopRequireDefault(_yoYo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function renderHome() {
+  $('.app-container').empty();
+  var el = (0, _yoYo2.default)(_templateObject);
+  $('.app-container').append(el);
+}
+
+},{"yo-yo":30}]},{},[36]);

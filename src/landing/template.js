@@ -1,8 +1,9 @@
 import yo from 'yo-yo';
 
+/*Render landing */
 export function renderHome() {
-    $('.app-container').empty();
-    var el = yo`  
+  $('.app-container').empty();
+  var el = yo`  
     <div class="row">
        <div class="col s12 m8 offset-m2 l6 offset-l3">
         <div class="card-panel grey lighten-5 z-depth-1">
@@ -20,5 +21,5 @@ export function renderHome() {
       </div>      
     </div>        
   `;
-    $('.app-container').append(el);
+  $('.app-container').append(el);
 }

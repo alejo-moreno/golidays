@@ -2,7 +2,7 @@ import yo from 'yo-yo';
 import List from 'list.js';
 
 
-
+/*Render inbox */
 export function renderInbox(inbox) {
   var $sideNav = $('.gvacation-sidenav');
   var el = yo`
@@ -21,6 +21,7 @@ export function renderInbox(inbox) {
   var employees = new List('inbox', { valueNames: ['title'] });
 }
 
+/*Render item */
 function renderItem(item) {
   return yo`  
     <li class="collection-item avatar" data-id=${item.id} >
@@ -43,12 +44,14 @@ function renderItem(item) {
   }
 }
 
+/*UI approve request */
 export function approveItem(id) {
   $('.app-container').find('.section .badge').removeClass('declined').addClass('approved');
   var $item = $('.gvacation-sidenav').find(`.collection li[data-id=${id}]`);
   $item.find('a.secondary-content i').text('thumb_up').css('color', '#03A9F4');
 }
 
+/*UI decline request */
 export function declineItem(id) {
   $('.app-container').find('.section .badge').removeClass('approved').addClass('declined');
   var $item = $('.gvacation-sidenav').find(`.collection li[data-id=${id}]`);
