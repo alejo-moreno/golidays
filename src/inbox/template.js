@@ -46,14 +46,16 @@ function renderItem(item) {
 
 /*UI approve request */
 export function approveItem(id) {
-  $('.app-container').find('.section .badge').removeClass('declined').addClass('approved');
+  var badge = $('.app-container').find('.section .badge');
+  badge.removeClass('declined').addClass('approved').html('approved');
   var $item = $('.gvacation-sidenav').find(`.collection li[data-id=${id}]`);
   $item.find('a.secondary-content i').text('thumb_up').css('color', '#03A9F4');
 }
 
 /*UI decline request */
 export function declineItem(id) {
-  $('.app-container').find('.section .badge').removeClass('approved').addClass('declined');
+  var badge = $('.app-container').find('.section .badge');
+  badge.removeClass('approved').addClass('declined').html('declined');
   var $item = $('.gvacation-sidenav').find(`.collection li[data-id=${id}]`);
   $item.find('a.secondary-content i').text('thumb_down').css('color', '#FF5252');
 }

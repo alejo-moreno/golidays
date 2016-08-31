@@ -3647,11 +3647,6 @@ module.exports = [
 },{}],32:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.renderHome = renderHome;
-
 var _page = require('page');
 
 var _page2 = _interopRequireDefault(_page);
@@ -3664,8 +3659,10 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/*GET specific holiday request detail*/
 (0, _page2.default)('/inbox/:id', function (ctx, next) {
     var itemId = ctx.params.id;
+    //Use localStorage for speed up requests
     if (!localStorage.inbox) {
         $.getJSON('/inbox', function (data) {
             localStorage.inbox = JSON.stringify(data);
@@ -3681,10 +3678,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     }
 });
 
-function renderHome() {
-    template.renderHome();
-}
-
 },{"./template":33,"page":26}],33:[function(require,module,exports){
 'use strict';
 
@@ -3692,11 +3685,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _templateObject = _taggedTemplateLiteral(['\n        <div class="container">\n          <div class="row">    \n            <div class="section">\n              <h5>', '</h5>\n              <span class="new badge ', '">', '</span>        \n            </div>            \n          </div>\n          <div class="divider"></div>\n          <div class="row">            \n            <div class="col s8 m8 l10">\n              <ul class="collection">\n                <li class="collection-item avatar">\n                  <img src=', ' alt="item.fullname" class="circle">\n                  <span class="email-title">', '</span>                    \n                  <p class="grey-text ultra-small">', '</p>\n                </li>\n              </ul>\n            </div>\n            <div class="col s4 m4 l2 actions">\n              <a href="/inbox/', '/approve"><span><i class="material-icons up">thumb_up</i></span></a>\n              <a href="/inbox/', '/decline"><span><i class="material-icons down">thumb_down</i></span></a>              \n            </div>\n          </div>\n          <div class="content">\n            <p>', '</p>\n            <p> From: ', ' </p>\n            <p> To: ', ' </p>\n            <p> Duration: ', ' </p>            \n          </div>      \n        </div>'], ['\n        <div class="container">\n          <div class="row">    \n            <div class="section">\n              <h5>', '</h5>\n              <span class="new badge ', '">', '</span>        \n            </div>            \n          </div>\n          <div class="divider"></div>\n          <div class="row">            \n            <div class="col s8 m8 l10">\n              <ul class="collection">\n                <li class="collection-item avatar">\n                  <img src=', ' alt="item.fullname" class="circle">\n                  <span class="email-title">', '</span>                    \n                  <p class="grey-text ultra-small">', '</p>\n                </li>\n              </ul>\n            </div>\n            <div class="col s4 m4 l2 actions">\n              <a href="/inbox/', '/approve"><span><i class="material-icons up">thumb_up</i></span></a>\n              <a href="/inbox/', '/decline"><span><i class="material-icons down">thumb_down</i></span></a>              \n            </div>\n          </div>\n          <div class="content">\n            <p>', '</p>\n            <p> From: ', ' </p>\n            <p> To: ', ' </p>\n            <p> Duration: ', ' </p>            \n          </div>      \n        </div>']),
-    _templateObject2 = _taggedTemplateLiteral(['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select an item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  '], ['  \n    <div class="row">\n       <div class="col s12 m8 offset-m2 l6 offset-l3">\n        <div class="card-panel grey lighten-5 z-depth-1">\n          <div class="row valign-wrapper">\n            <div class="col s2">\n              <i class="material-icons">folder</i>\n            </div>\n            <div class="col s10">\n              <span class="black-text">\n                Welcome to Golidays. Select an item on the side menu to start working.\n              </span>\n            </div>\n          </div>\n        </div>\n      </div>      \n    </div>        \n  ']);
+var _templateObject = _taggedTemplateLiteral(['\n        <div class="container">\n          <div class="row">    \n            <div class="section">\n              <h5>', '</h5>\n              <span class="new badge ', '">', '</span>        \n            </div>            \n          </div>\n          <div class="divider"></div>\n          <div class="row">            \n            <div class="col s8 m8 l10">\n              <ul class="collection">\n                <li class="collection-item avatar">\n                  <img src=', ' alt="item.fullname" class="circle">\n                  <span class="email-title">', '</span>                    \n                  <p class="grey-text ultra-small">', '</p>\n                </li>\n              </ul>\n            </div>\n            <div class="col s4 m4 l2 actions">\n              <a href="/inbox/', '/approve"><span><i class="material-icons up">thumb_up</i></span></a>\n              <a href="/inbox/', '/decline"><span><i class="material-icons down">thumb_down</i></span></a>              \n            </div>\n          </div>\n          <div class="content">\n            <p>', '</p>\n            <p> From: ', ' </p>\n            <p> To: ', ' </p>\n            <p> Duration: ', ' </p>            \n          </div>      \n        </div>'], ['\n        <div class="container">\n          <div class="row">    \n            <div class="section">\n              <h5>', '</h5>\n              <span class="new badge ', '">', '</span>        \n            </div>            \n          </div>\n          <div class="divider"></div>\n          <div class="row">            \n            <div class="col s8 m8 l10">\n              <ul class="collection">\n                <li class="collection-item avatar">\n                  <img src=', ' alt="item.fullname" class="circle">\n                  <span class="email-title">', '</span>                    \n                  <p class="grey-text ultra-small">', '</p>\n                </li>\n              </ul>\n            </div>\n            <div class="col s4 m4 l2 actions">\n              <a href="/inbox/', '/approve"><span><i class="material-icons up">thumb_up</i></span></a>\n              <a href="/inbox/', '/decline"><span><i class="material-icons down">thumb_down</i></span></a>              \n            </div>\n          </div>\n          <div class="content">\n            <p>', '</p>\n            <p> From: ', ' </p>\n            <p> To: ', ' </p>\n            <p> Duration: ', ' </p>            \n          </div>      \n        </div>']);
 
 exports.renderDetail = renderDetail;
-exports.renderHome = renderHome;
 
 var _yoYo = require('yo-yo');
 
@@ -3706,15 +3697,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+/* Render request detail */
 function renderDetail(item) {
   $('.app-container').empty();
   var el = (0, _yoYo2.default)(_templateObject, item.fullname, item.status, item.status, item.picture, item.fullname, item.applicationDate, item.id, item.id, item.comment, item.dateFrom, item.dateTo, item.duration);
-  $('.app-container').append(el);
-}
-
-function renderHome() {
-  $('.app-container').empty();
-  var el = (0, _yoYo2.default)(_templateObject2);
   $('.app-container').append(el);
 }
 
@@ -3738,6 +3724,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/*approve specific request */
 (0, _page2.default)('/inbox/:id/approve', function (ctx, next) {
     var inbox = JSON.parse(localStorage.inbox);
     inbox.filter(function (item) {
@@ -3747,6 +3734,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     template.approveItem(ctx.params.id);
 });
 
+/*decline specific request */
 (0, _page2.default)('/inbox/:id/decline', function (ctx, next) {
     var inbox = JSON.parse(localStorage.inbox);
     inbox.filter(function (item) {
@@ -3756,6 +3744,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     template.declineItem(ctx.params.id);
 });
 
+/*GET inbox from server or localStorage */
 function getInbox() {
     if (!localStorage.inbox) {
         $.getJSON('/inbox', function (data) {
@@ -3793,6 +3782,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+/*Render inbox */
 function renderInbox(inbox) {
   var $sideNav = $('.gvacation-sidenav');
   var el = (0, _yoYo2.default)(_templateObject, inbox.map(function (item) {
@@ -3805,6 +3795,7 @@ function renderInbox(inbox) {
   var employees = new _list2.default('inbox', { valueNames: ['title'] });
 }
 
+/*Render item */
 function renderItem(item) {
   return (0, _yoYo2.default)(_templateObject2, item.id, item.id, selectItem.bind(this), item.picture, item.fullname, item.duration, item.applicationDate, item.status, item.status == 'approved' ? 'thumb_up' : item.status == 'declined' ? 'thumb_down' : 'grade');
   function selectItem(el) {
@@ -3816,14 +3807,18 @@ function renderItem(item) {
   }
 }
 
+/*UI approve request */
 function approveItem(id) {
-  $('.app-container').find('.section .badge').removeClass('declined').addClass('approved');
+  var badge = $('.app-container').find('.section .badge');
+  badge.removeClass('declined').addClass('approved').html('approved');
   var $item = $('.gvacation-sidenav').find('.collection li[data-id=' + id + ']');
   $item.find('a.secondary-content i').text('thumb_up').css('color', '#03A9F4');
 }
 
+/*UI decline request */
 function declineItem(id) {
-  $('.app-container').find('.section .badge').removeClass('approved').addClass('declined');
+  var badge = $('.app-container').find('.section .badge');
+  badge.removeClass('approved').addClass('declined').html('declined');
   var $item = $('.gvacation-sidenav').find('.collection li[data-id=' + id + ']');
   $item.find('a.secondary-content i').text('thumb_down').css('color', '#FF5252');
 }
@@ -3849,6 +3844,8 @@ var _detail2 = _interopRequireDefault(_detail);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/*Client-side entrypoint */
+
 (0, _page2.default)('/', '/home');
 
 (0, _page2.default)();
@@ -3872,6 +3869,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+/*GET application landing */
 (0, _page2.default)('/home', function (ctx, next) {
     template.renderHome();
     inbox.getInbox();
@@ -3896,6 +3894,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+/*Render landing */
 function renderHome() {
   $('.app-container').empty();
   var el = (0, _yoYo2.default)(_templateObject);

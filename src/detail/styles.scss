@@ -9,12 +9,12 @@
         span.badge.new:after{
           content: " ";
         }
-        span.badge.approved{
+        span.badge.approved{            
           background-color: #03A9F4 !important;          
         }
-        span.badge.declined{
+        span.badge.declined{        
           background-color: #FF5252 !important;          
-        }                
+        }                                
     }
     .collection {
         border: none;
