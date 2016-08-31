@@ -6493,28 +6493,45 @@ section {
 
 #nav-mobile {
   top: 64px;
-  background-color: #fafafa;
-  overflow: hidden; }
-  #nav-mobile:hover {
-    overflow-y: auto; }
+  background-color: #fafafa; }
 
 .gvacation-sidenav {
   position: fixed;
   width: 310px;
-  height: calc(100% - 10vh);
   left: 0;
   top: 0;
   margin: 0;
   transform: translateX(-100%);
+  height: 100%;
+  height: calc(100% + 60px);
   height: -moz-calc(100%);
   padding-bottom: 60px;
   background-color: #fff;
   z-index: 999;
   backface-visibility: hidden;
-  overflow-y: auto;
   will-change: transform;
   backface-visibility: hidden;
   transform: translateX(-105%); }
+  .gvacation-sidenav.fixed {
+    left: 0;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    position: fixed; }
+
+@media only screen and (max-width: 993px) {
+  .gvacation-sidenav.fixed {
+    overflow: auto !important; } }
+
+@media only screen and (max-width: 992px) {
+  .gvacation-sidenav.fixed {
+    -webkit-transform: translateX(-105%);
+    transform: translateX(-105%); } }
+
+ul.gvacation-sidenav.fixed {
+  overflow: hidden; }
+
+ul.gvacation-sidenav.fixed:hover {
+  overflow-y: auto; }
 
 a.button-collapse.top-nav {
   position: absolute;
