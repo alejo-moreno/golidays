@@ -6518,14 +6518,11 @@ section {
     transform: translateX(0);
     position: fixed; }
 
-@media only screen and (max-width: 993px) {
-  .gvacation-sidenav.fixed {
-    overflow: auto !important; } }
-
 @media only screen and (max-width: 992px) {
   .gvacation-sidenav.fixed {
     -webkit-transform: translateX(-105%);
-    transform: translateX(-105%); } }
+    transform: translateX(-105%);
+    overflow: auto !important; } }
 
 ul.gvacation-sidenav.fixed {
   overflow: hidden; }
