@@ -6494,7 +6494,7 @@ section {
 #nav-mobile {
   top: 64px;
   background-color: #fafafa;
-  overflow: hidden; }
+  overflow: auto; }
   #nav-mobile:hover {
     overflow-y: auto; }
 

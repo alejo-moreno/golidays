@@ -37,8 +37,8 @@ section {
 #nav-mobile {
  top:64px;
  background-color: #fafafa;
- overflow: hidden;
- &:hover{
+ overflow: auto;
+ &:hover {
     overflow-y: auto;
  }  
 } 
