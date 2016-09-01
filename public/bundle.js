@@ -3764,7 +3764,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _templateObject = _taggedTemplateLiteral(['\n    <li id="inbox" class="inbox">       \n      <input class="search" placeholder=\'Search by employee\'/>\n      <i class="material-icons">search</i>\n      <ul class="collection list">\n        ', '     \n      </ul>\n    </li>\n    '], ['\n    <li id="inbox" class="inbox">       \n      <input class="search" placeholder=\'Search by employee\'/>\n      <i class="material-icons">search</i>\n      <ul class="collection list">\n        ', '     \n      </ul>\n    </li>\n    ']),
-    _templateObject2 = _taggedTemplateLiteral(['  \n    <li class="collection-item avatar" data-id=', ' >\n     <a href="/inbox/', '" onclick=', '>\n      <img src="', '" alt="item.fullname" class="circle">           \n      <span class="title">', '</span>\n      <p class="grey-text">', ' <br>\n        ', '\n      </p>\n      <a href="#!" class="secondary-content"><i class="material-icons ', '">', '</i></a>\n     </a > \n    </li >\n    '], ['  \n    <li class="collection-item avatar" data-id=', ' >\n     <a href="/inbox/', '" onclick=', '>\n      <img src="', '" alt="item.fullname" class="circle">           \n      <span class="title">', '</span>\n      <p class="grey-text">', ' <br>\n        ', '\n      </p>\n      <a href="#!" class="secondary-content"><i class="material-icons ', '">', '</i></a>\n     </a > \n    </li >\n    ']);
+    _templateObject2 = _taggedTemplateLiteral(['  \n    <li class="collection-item avatar" data-id=', ' >\n     <a href="/inbox/', '" onclick=', '>\n      <img src="', '" alt="item.fullname" class="circle">           \n      <span class="title">', '</span>\n      <p class="grey-text">', ' <br>\n        ', '\n      </p>\n      <a href="/inbox/', '" class="secondary-content"><i class="material-icons ', '">', '</i></a>\n     </a > \n    </li >\n    '], ['  \n    <li class="collection-item avatar" data-id=', ' >\n     <a href="/inbox/', '" onclick=', '>\n      <img src="', '" alt="item.fullname" class="circle">           \n      <span class="title">', '</span>\n      <p class="grey-text">', ' <br>\n        ', '\n      </p>\n      <a href="/inbox/', '" class="secondary-content"><i class="material-icons ', '">', '</i></a>\n     </a > \n    </li >\n    ']);
 
 exports.renderInbox = renderInbox;
 exports.approveItem = approveItem;
@@ -3797,7 +3797,7 @@ function renderInbox(inbox) {
 
 /*Render item */
 function renderItem(item) {
-  return (0, _yoYo2.default)(_templateObject2, item.id, item.id, selectItem.bind(this), item.picture, item.fullname, item.duration, item.applicationDate, item.status, item.status == 'approved' ? 'thumb_up' : item.status == 'declined' ? 'thumb_down' : 'grade');
+  return (0, _yoYo2.default)(_templateObject2, item.id, item.id, selectItem.bind(this), item.picture, item.fullname, item.duration, item.applicationDate, item.id, item.status, item.status == 'approved' ? 'thumb_up' : item.status == 'declined' ? 'thumb_down' : 'grade');
   function selectItem(el) {
     $('.gvacation-sidenav .collection').find('*').removeClass('active');
     var item = $(el.currentTarget).closest('li').addClass('active');

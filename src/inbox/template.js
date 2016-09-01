@@ -31,7 +31,7 @@ function renderItem(item) {
       <p class="grey-text">${item.duration} <br>
         ${item.applicationDate}
       </p>
-      <a href="#!" class="secondary-content"><i class="material-icons ${item.status}">${item.status == 'approved' ? 'thumb_up' : item.status == 'declined' ? 'thumb_down' : 'grade'}</i></a>
+      <a href="/inbox/${item.id}" class="secondary-content"><i class="material-icons ${item.status}">${item.status == 'approved' ? 'thumb_up' : item.status == 'declined' ? 'thumb_down' : 'grade'}</i></a>
      </a > 
     </li >
     `;
