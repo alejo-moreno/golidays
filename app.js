@@ -6,6 +6,7 @@ var app = express();
 // view engine setup
 app.set('view engine', 'jade');
 
+app.use(require('prerender-node').set('prerenderToken', 'zhuc9wS3LSGFa7jqSZON'));
 app.use(express.static('public'));
 
 app.use('/', routes);
