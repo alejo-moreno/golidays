@@ -3848,7 +3848,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _page2.default)('/', '/home');
 
-(0, _page2.default)();
+(0, _page2.default)({
+    hashbang: true
+});
 
 },{"page":26,"src/detail":32,"src/inbox":34,"src/landing":37}],37:[function(require,module,exports){
 'use strict';
