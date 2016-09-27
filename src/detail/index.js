@@ -6,7 +6,7 @@ page('/inbox/:id', function (ctx, next) {
     var itemId = ctx.params.id;
     //Use localStorage for speed up requests
     if (!localStorage.inbox) {
-        $.getJSON('/inbox', function (data) {
+        $.getJSON('/api/inbox', function (data) {
             localStorage.inbox = JSON.stringify(data);
             template.renderDetail(data.filter(item => item.id == itemId)[0]);
         });

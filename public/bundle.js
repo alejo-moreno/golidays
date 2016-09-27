@@ -3664,7 +3664,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     var itemId = ctx.params.id;
     //Use localStorage for speed up requests
     if (!localStorage.inbox) {
-        $.getJSON('/inbox', function (data) {
+        $.getJSON('/api/inbox', function (data) {
             localStorage.inbox = JSON.stringify(data);
             template.renderDetail(data.filter(function (item) {
                 return item.id == itemId;
@@ -3747,7 +3747,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 /*GET inbox from server or localStorage */
 function getInbox() {
     if (!localStorage.inbox) {
-        $.getJSON('/inbox', function (data) {
+        $.getJSON('/api/inbox', function (data) {
             localStorage.inbox = JSON.stringify(data);
             template.renderInbox(data);
         });
@@ -3848,9 +3848,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _page2.default)('/', '/home');
 
-(0, _page2.default)({
-    hashbang: true
-});
+(0, _page2.default)();
 
 },{"page":26,"src/detail":32,"src/inbox":34,"src/landing":37}],37:[function(require,module,exports){
 'use strict';

@@ -7,6 +7,4 @@ import detail from 'src/detail';
 
 page('/', '/home');
 
-page({
-    hashbang: true
-});
+page();

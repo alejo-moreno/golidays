@@ -3,6 +3,12 @@ import inbox from 'inbox.json';
 
 var router = express.Router();
 
+
+/* GET inbox requests. */
+router.get('/inbox/*', function (req, res, next) {
+    res.render('index', { title: 'Golidays' });
+})
+
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('index', { title: 'Golidays' });
@@ -14,13 +20,11 @@ router.get('/home', function (req, res, next) {
 });
 
 /* GET inbox resource. */
-router.get('/inbox', function (req, res, next) {
-    res.redirect('/');
+router.get('/api/inbox', function (req, res, next) {
+    res.json(inbox)
 })
 
-/* GET inbox subsequent request. */
-router.get('/inbox/*', function (req, res, next) {
-    res.redirect('/');
-})
+
+
 
 module.exports = router;

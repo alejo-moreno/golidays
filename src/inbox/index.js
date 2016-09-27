@@ -20,7 +20,7 @@ page('/inbox/:id/decline', function (ctx, next) {
 /*GET inbox from server or localStorage */
 export function getInbox() {
     if (!localStorage.inbox) {
-        $.getJSON('/inbox', function (data) {
+        $.getJSON('/api/inbox', function (data) {
             localStorage.inbox = JSON.stringify(data);
             template.renderInbox(data);
         });
