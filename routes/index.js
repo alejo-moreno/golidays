@@ -15,7 +15,7 @@ router.get('/home', function (req, res, next) {
 
 /* GET inbox resource. */
 router.get('/inbox', function (req, res, next) {
-    res.json(inbox)
+    res.redirect('/');
 })
 
 /* GET inbox subsequent request. */
